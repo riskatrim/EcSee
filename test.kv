@@ -1,0 +1,106 @@
+Test:
+
+<BoxLayout>:
+    id: my_layout
+    orientation: "vertical"
+    size: root.width, root.height
+
+    padding: 50
+    spacing: 20
+
+    Label:
+        id: result_label
+        text: ''
+        size_hint: .1, .3
+        pos_hint: {"center_x": .5}
+
+    Label:
+        id: accuracy_label
+        text: ''
+        size_hint: .1, .1
+        pos_hint: {"center_x": .5}
+
+    Label:
+        id: filtering_label
+        text: ''
+        size_hint: .1, .1
+        pos_hint: {"center_x": .5}
+
+    Image:
+        id: my_image
+        source: ''
+
+    Button:
+        id: my_button
+        text: 'Detect Allergens'
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        on_release:
+            self.minimum_width = self.texture_size[0]
+            self.minimum_height = self.texture_size[1]
+        on_press: app.detect_allergens(self)
+        size_hint: .3, None
+        height: self.texture_size[1]
+        pos_hint: {"center_x": .5}
+
+    GridLayout:
+        id: button_grid
+        cols: 7
+        rows: 1
+        spacing: 20
+        size_hint: 1, 0.3
+
+        Button:
+            id: my_button1
+            text: 'susu'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+        Button:
+            id: my_button1
+            text: 'gluten'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+        Button:
+            id: my_button1
+            text: 'kedelai'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+        Button:
+            id: my_button1
+            text: 'terigu'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+        Button:
+            id: my_button1
+            text: 'telur'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+        Button:
+            id: my_button1
+            text: 'tomat'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+        Button:
+            id: my_button1
+            text: 'kacang'
+            on_press: my_layout.count_allergens(my_button1)
+            size_hint: (None, None)
+            size: (83, 50)
+
+    FileChooserIconView:
+        id: filechooser
+        filters: ['*.jpg', '*.jpeg', '*.png']
+        on_selection: my_layout.selected(filechooser.selection)
